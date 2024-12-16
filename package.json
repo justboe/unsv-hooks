@@ -1,0 +1,58 @@
+{
+  "name": "@unsv/hooks",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "@unsv/hooks",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./stores": {
+      "types": "./dist/stores/index.d.ts",
+      "import": "./dist/stores/index.mjs",
+      "require": "./dist/stores/index.cjs"
+    },
+    "./actions": {
+      "types": "./dist/actions/index.d.ts",
+      "import": "./dist/actions/index.mjs",
+      "require": "./dist/actions/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "vitest dev",
+    "lint": "eslint . && prettier -c .",
+    "lint:fix": "automd && eslint . --fix && prettier -w .",
+    "prepack": "pnpm build",
+    "play": "jiti playground",
+    "release": "pnpm test && changelogen --release && npm publish && git push --follow-tags",
+    "test": "pnpm lint && pnpm test:types && vitest run --coverage",
+    "test:types": "tsc --noEmit --skipLibCheck"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@vitest/coverage-v8": "^2.1.6",
+    "automd": "^0.3.12",
+    "changelogen": "^0.5.7",
+    "eslint": "^9.15.0",
+    "eslint-config-unjs": "^0.4.2",
+    "jiti": "^2.4.0",
+    "prettier": "^3.4.1",
+    "svelte": "^5.9.0",
+    "typescript": "^5.7.2",
+    "unbuild": "^2.0.0",
+    "vitest": "^2.1.6"
+  },
+  "packageManager": "pnpm@9.14.2"
+}
